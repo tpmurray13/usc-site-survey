@@ -9,15 +9,16 @@
 <link rel="stylesheet" href="assets/fonts.css">
 <link rel="stylesheet" href="assets/vendor/leaflet.css">
 <link rel="stylesheet" href="assets/styles.css">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%231c2b3a'/%3E%3Cpath d='M8 17l8-7 8 7v8H8z' fill='none' stroke='%23e9e4d6' stroke-width='2.4' stroke-linejoin='round'/%3E%3C/svg%3E">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%2317613c'/%3E%3Cpath d='M8 17l8-7 8 7v8H8z' fill='none' stroke='%23e9e4d6' stroke-width='2.4' stroke-linejoin='round'/%3E%3C/svg%3E">
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
 <header class="topbar">
   <div class="wrap topbar__in">
     <a class="brand" href="#top">
-      <span class="brand__k">Cumberland County, NC</span>
-      <span class="brand__t">Unhoused Support Center · Site Survey</span>
+      <img class="brand__logo" src="assets/img/gm-logo.svg" alt="Grant-Murray Real Estate" width="133" height="40">
+      <span class="brand__txt"><span class="brand__k">Cumberland County, NC</span>
+      <span class="brand__t">Unhoused Support Center · Site Survey</span></span>
     </a>
     <nav class="nav" aria-label="Sections">
       <a href="#summary">Summary</a>
@@ -39,11 +40,11 @@
   <div class="wrap hero__grid">
     <div>
       <p class="eyebrow">Site selection &amp; acquisition · October 2026 survey</p>
-      <h1>Finding the right ground for the Unhoused Support Center</h1>
-      <p class="lede">The Board's October 19 motion asks staff to identify up to five alternative sites within the county for the November 12, 2026 agenda session. This survey screens 16 properties: 13 from the October land review, two owner leads County staff sent over, and 511 S Eastern Blvd. Each was checked against County GIS, FEMA flood maps and FAST transit data.</p>
+      <h1>Unhoused Support Center</h1>
+      <p class="lede">The Board's October 19 motion asks staff to identify up to five alternative sites within the county for the November 12, 2026 agenda session. This survey screens 16 properties: 13 from the October land review, two sites County staff referred (Mann St and Bonnie St), and 511 S Eastern Blvd. Each was checked against County GIS, FEMA flood maps and FAST transit data.</p>
       <dl class="meta">
         <div><dt>Prepared for</dt><dd>Cumberland County</dd></div>
-        <div><dt>Prepared by</dt><dd>Patrick Murray, CCIM, SIOR · Grant-Murray Real Estate</dd></div>
+        <div><dt>Prepared by</dt><dd>Patrick Murray, CCIM, SIOR and Marty Cayton · Grant-Murray Real Estate</dd></div>
         <div><dt>Survey date</dt><dd>October 2026</dd></div>
       </dl>
     </div>
@@ -62,9 +63,9 @@
     <div class="findings">
       <h2 class="h2">Key findings</h2>
       <ol class="findings__list">
-        <li><strong>Proposed shortlist for November 12:</strong> 511 S Eastern Blvd, 5017 Yadkin Rd, 1540 Buster Vee Ln, E Jenkins St, and 601–610 Mann St as a building-reuse option. All five are inside or touching Fayetteville city limits and within about 0.7 mile of a FAST stop.</li>
-        <li><strong>511 S Eastern Blvd is the cleanest in-city land play.</strong> It is a 3.93-acre former hotel site zoned HI at about $100,000 per acre (seller to confirm), with transit 0.3 mile away. The open question is that it sits 0.38 mile from Walker-Spivey Elementary.</li>
-        <li><strong>Most outside-city listings drop out on transit, not jurisdiction.</strong> Six of the ten sites outside the city are more than a mile from the nearest FAST stop, and two more can't be located yet. Bonnie St and 222 Duke St are well located but under the 3.5-acre minimum.</li>
+        <li><strong>Proposed shortlist for November 12:</strong> 511 S Eastern Blvd, 0 Driveway (off Cliffdale Rd), 5017 Yadkin Rd, 1540 Buster Vee Ln and E Jenkins St. All five are at least 2.5 acres, more than 1,000 ft from a public school, and inside or touching Fayetteville city limits.</li>
+        <li><strong>511 S Eastern Blvd is the cleanest in-city site.</strong> It is a 3.93-acre former hotel site zoned HI, out of the flood zone, about 1,460 ft from the nearest school and 0.3 mile from transit. Our working figure is about $100,000 per acre; the seller has not confirmed a price.</li>
+        <li><strong>Flood exposure is the main constraint on the in-city listings.</strong> Yadkin Rd (35%), Buster Vee Ln (16%), Driveway (12%) and Duke St (41%) are all partly in the FEMA flood zone and need buildable-area test fits. Mann St fails the 1,000 ft school buffer, and Bonnie St is under 2.5 acres.</li>
       </ol>
     </div>
   </div>
@@ -79,7 +80,9 @@
       </div>
       <div class="maptools" role="group" aria-label="Map layers">
         <label><input type="checkbox" id="lyrCand" checked> Candidates</label>
-        <label><input type="checkbox" id="lyrPast" checked> Prior sites</label>
+        <label><input type="checkbox" id="lyrPast" checked> Current contract</label>
+        <label><input type="checkbox" id="lyrStops" checked> FAST bus stops</label>
+        <label><input type="checkbox" id="lyrSch" checked> Public schools</label>
         <label><input type="checkbox" id="lyrCity" checked> City limits</label>
         <label><input type="checkbox" id="lyrBus"> FAST routes</label>
         <span class="seg" role="radiogroup" aria-label="Basemap">
@@ -89,17 +92,17 @@
       </div>
     </div>
     <div class="mapbox">
-      <div id="mapEl" role="region" aria-label="Map of candidate and prior sites"></div>
+      <div id="mapEl" role="region" aria-label="Map of candidate sites, bus stops and schools"></div>
       <div class="legend" aria-hidden="true">
-        <span><i class="dot dot--advance"></i>Advance to field review</span>
-        <span><i class="dot dot--conditional"></i>Conditional</span>
-        <span><i class="dot dot--screened"></i>Screened out</span>
-        <span><i class="dot dot--contract"></i>Under contract</span>
-        <span><i class="dot dot--past"></i>Prior / lead</span>
+        <span><i class="dot dot--short"></i>Proposed shortlist (1–5)</span>
+        <span><i class="dot dot--other"></i>Other surveyed sites (6–16)</span>
+        <span><i class="dot dot--contract"></i>Under contract (King / Racepath)</span>
+        <span><i class="dot dot--stop"></i>FAST bus stop</span>
+        <span><i class="schpin schpin--lg">S</i>Public school (dashed ring ≈ 1,000 ft)</span>
         <span><i class="sw sw--city"></i>Fayetteville city limits</span>
       </div>
     </div>
-    <p class="note">Johnson Rd Lot L and US Hwy 301 South (Hope Mills) aren't on the map because the listings don't give enough detail to match a County parcel. Numbered pins are the proposed shortlist. Parcel outlines come from County GIS.</p>
+    <p class="note">Pin numbers match the site numbers on the cards and in the matrix. Parcel outlines come from County GIS. The Johnson Rd Lot L pin is approximate because the new lot is not in County GIS yet.</p>
   </div>
 </section>
 
@@ -107,20 +110,13 @@
   <div class="wrap">
     <div class="sechead">
       <div>
-        <p class="eyebrow">October 2026 land review + owner leads</p>
+        <p class="eyebrow">All 16 surveyed sites</p>
         <h2 class="h2">Candidate properties</h2>
       </div>
       <div class="filters">
-        <div class="chips" role="group" aria-label="Filter candidates">
-          <button type="button" class="chip is-on" data-f="all">All <span></span></button>
-          <button type="button" class="chip" data-f="advance">Advance <span></span></button>
-          <button type="button" class="chip" data-f="conditional">Conditional <span></span></button>
-          <button type="button" class="chip" data-f="screened">Screened out <span></span></button>
-          <button type="button" class="chip" data-f="city">Inside city <span></span></button>
-        </div>
         <label class="sort">Sort
           <select id="sortSel">
-            <option value="rank">Recommendation</option>
+            <option value="rank">Site number</option>
             <option value="price">Asking price</option>
             <option value="acres">Acreage (largest)</option>
             <option value="ppa">Price per acre</option>
@@ -147,7 +143,7 @@
         <thead>
           <tr>
             <th data-k="name" scope="col">Property</th>
-            <th data-k="rank" scope="col">Status</th>
+            <th data-k="contact" scope="col">Listing / contact</th>
             <th data-k="acres" scope="col" class="num">Acres</th>
             <th data-k="price" scope="col" class="num">Asking</th>
             <th data-k="ppa" scope="col" class="num">$ / acre</th>
@@ -155,13 +151,13 @@
             <th data-k="city" scope="col">City limits</th>
             <th data-k="flood" scope="col">Flood</th>
             <th data-k="transit" scope="col" class="num">FAST stop</th>
-            <th data-k="school" scope="col" class="num">Public school</th>
+            <th data-k="school" scope="col" class="num">Public school (ft)</th>
           </tr>
         </thead>
         <tbody></tbody>
       </table>
     </div>
-    <p class="note">Distances are straight-line miles from the nearest parcel edge. Public schools are Cumberland County Schools campuses only; private schools and child care centers still need to be checked.</p>
+    <p class="note">FAST stop distances are straight-line miles from the nearest parcel edge. School distances are straight-line feet from the parcel edge to the school's parcel. Flood percentages are the share of the mapped parcel inside the FEMA flood zone (1% annual chance). Public schools are Cumberland County Schools campuses only; private schools and child care centers still need to be checked.</p>
   </div>
 </section>
 
@@ -195,8 +191,6 @@
         </article>
       </div>
     </div>
-    <h3 class="h3 mt">Sites evaluated earlier</h3>
-    <div class="past" id="pastGrid"></div>
   </div>
 </section>
 
@@ -205,33 +199,32 @@
     <div>
       <p class="eyebrow">How sites were screened</p>
       <h2 class="h2">Requirements &amp; method</h2>
-      <p>The County's December 2025 brokerage RFP called for a site <strong>inside Fayetteville city limits</strong> of <strong>at least 3.5 acres</strong>, enough for the building, parking and a stormwater retention pond, that is vacant or has removable structures. On October 19, 2026 the Board widened the search to <strong>up to five alternative sites within the county</strong>, so this survey treats city limits as a preference instead of a disqualifier. The spring 2026 feasibility matrix added transit and pedestrian access, utilities, flood risk, environmental history, zoning path, nearby services, and neighborhood compatibility.</p>
+      <p>The County's December 2025 brokerage RFP called for a site <strong>inside Fayetteville city limits</strong> of <strong>at least 3.5 acres</strong>, enough for the building, parking and a stormwater retention pond, that is vacant or has removable structures. On October 19, 2026 the Board widened the search to <strong>up to five alternative sites within the county</strong>, so this survey treats city limits as a preference instead of a disqualifier. For this round the size floor is 2.5 acres and the school buffer is 1,000 linear feet. The spring 2026 feasibility matrix added transit and pedestrian access, utilities, flood risk, environmental history, zoning path, nearby services, and neighborhood compatibility.</p>
       <h3 class="h3">Screening tests on this page</h3>
       <table class="tests">
         <tbody>
-          <tr><th scope="row">Size</th><td>At least 3.5 acres, checked against County GIS parcel acreage where we could match the parcel.</td></tr>
+          <tr><th scope="row">Size</th><td>Pass at 2.5 acres or more, using both the listed acreage and the County GIS parcel. Marked verify when the two sources disagree across the 2.5-acre line.</td></tr>
           <tr><th scope="row">Jurisdiction</th><td>Pass if the parcel center is inside Fayetteville city limits (County city-limits layer). Sites elsewhere in the county are marked verify, not fail.</td></tr>
           <tr><th scope="row">Transit</th><td>Pass at 0.5 mile or less to a FAST stop, verify at 0.5–1.0 mile, fail beyond 1.0 mile.</td></tr>
-          <tr><th scope="row">Schools</th><td>Pass at 0.5 mile or more from a Cumberland County public school campus, verify at 0.25–0.5 mile, fail under 0.25 mile.</td></tr>
-          <tr><th scope="row">Flood</th><td>FEMA NFHL zone on the parcel. Any partial AE or floodway area means we need a buildable-area test fit.</td></tr>
+          <tr><th scope="row">Schools</th><td>Pass at 1,000 linear feet or more from a Cumberland County public school parcel, measured parcel edge to parcel edge. Fail under 1,000 ft.</td></tr>
+          <tr><th scope="row">Flood</th><td>FEMA flood zone status: Out (Zone X) passes. Partly in shows the share of the parcel in the 1% annual-chance flood zone and floodway, and is marked verify until a buildable-area test fit is done.</td></tr>
         </tbody>
       </table>
     </div>
     <div>
       <h3 class="h3">Recommended next steps</h3>
       <ol class="steps">
-        <li>Get the seller's confirmation of the roughly $100,000-per-acre pricing on 511 S Eastern Blvd, and a price from Cross Creek New Homes on Mann St.</li>
-        <li>Contact the listing agents for 5017 Yadkin Rd and 1540 Buster Vee Ln to confirm parcel IDs, total acreage, utilities, and seller terms.</li>
-        <li>Order a quick wetlands, floodway and buildable-area test fit for both in-city sites.</li>
-        <li>Ask the City Planning Department whether the shelter use would be allowed under CC and AR zoning, and what the special use or rezoning path would be.</li>
-        <li>Confirm with the County whether the 0.5-mile school buffer is firm (it affects 511 S Eastern and Mann St), and whether E Jenkins St should be annexed or developed under County zoning.</li>
+        <li>Get the seller's price on 511 S Eastern Blvd and confirm the timing to remove the print-shop tenant. Order a Phase I.</li>
+        <li>Contact the listing agents for Driveway, Yadkin Rd, Buster Vee Ln and E Jenkins St to confirm parcel IDs, total acreage, access, utilities and seller terms. Confirm the E Jenkins auction timing.</li>
+        <li>Order quick floodway and buildable-area test fits for Driveway, Yadkin Rd and Buster Vee Ln.</li>
+        <li>Ask City Planning whether the shelter use is allowed under HI, SF-6, CC and AR zoning, and what the special use or rezoning path would be. Ask the County whether E Jenkins St should be annexed or developed under County zoning.</li>
         <li>Bring the five-site shortlist to the November 12, 2026 agenda session.</li>
         <li>Send the termination notice on the King/Racepath contract before 5:00 PM on December 8, 2026.</li>
-        <li>Check child care centers and private schools within 0.5 mile of any finalist.</li>
+        <li>Check child care centers and private schools within 1,000 ft of any finalist.</li>
       </ol>
       <h3 class="h3">Data sources</h3>
       <ul class="sources">
-        <li>Listing details and photographs: October 2026 land review (Longleaf Pine REALTORS MLS and broker marketing). Owner leads: County staff referrals of Oct 20–28, 2026 and owner calls.</li>
+        <li>Listing details and photographs: October 2026 land review (Longleaf Pine REALTORS MLS and broker marketing). Listing agent contacts: MLS and broker listings, checked October 2026. Mann St and Bonnie St: County staff referrals of Oct 20–28, 2026. 511 S Eastern Blvd: owner discussions by Marty Cayton.</li>
         <li>Aerial exhibits for 511 S Eastern, Mann St and Bonnie St: <a href="https://services.arcgisonline.com/arcgis/rest/services/World_Imagery/MapServer" rel="noopener">Esri World Imagery</a> (capture dates vary).</li>
         <li>Parcels, city limits, zoning and schools: <a href="https://gis.co.cumberland.nc.us/server/rest/services" rel="noopener">Cumberland County GIS</a>.</li>
         <li>Flood zones: <a href="https://hazards.fema.gov/arcgis/rest/services/public/NFHL/MapServer" rel="noopener">FEMA National Flood Hazard Layer</a>.</li>
@@ -247,9 +240,10 @@
 <footer class="footer">
   <div class="wrap footer__in">
     <div>
-      <p class="footer__n">Patrick Murray, CCIM, SIOR</p>
-      <p>Grant-Murray Real Estate · 150 N McPherson Church Rd, Fayetteville, NC</p>
-      <p><a href="tel:+19108291617">910.829.1617</a> · <a href="mailto:patrick@grantmurrayre.com">patrick@grantmurrayre.com</a></p>
+      <img class="footer__logo" src="assets/img/gm-logo-white.svg" alt="Grant-Murray Real Estate" width="153" height="46">
+      <p>150 N McPherson Church Rd, Fayetteville, NC 28303</p>
+      <p><span class="footer__n">Patrick Murray, CCIM, SIOR</span> · <a href="tel:+19108291617">910.829.1617</a> · <a href="mailto:patrick@grantmurrayre.com">patrick@grantmurrayre.com</a></p>
+      <p><span class="footer__n">Marty Cayton, Broker</span> · <a href="tel:+19102372640">910.237.2640</a> · <a href="mailto:marty@grantmurrayre.com">marty@grantmurrayre.com</a></p>
     </div>
     <p class="footer__c">Prepared for Cumberland County staff and officials. Please do not forward outside the County.</p>
   </div>
@@ -264,6 +258,7 @@
 
 <script src="assets/vendor/leaflet.js"></script>
 <script src="assets/data.js"></script>
+<script src="assets/poi.js"></script>
 <script src="assets/app.js"></script>
 </body>
 </html>
