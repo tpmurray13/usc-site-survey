@@ -126,10 +126,10 @@ function renderMatrix(){
   document.querySelector('#matrix tbody').innerHTML=rows.map(function(c){
     return '<tr data-open="'+c.id+'" tabindex="0"><td class="name">'+sno(c)+esc(c.name)+'<span class="sub">'+esc(c.pins.length?c.pins.join(', '):'Parcel not matched')+'</span></td>'+
     '<td>'+esc(contactLine(c))+(c.contact.type==='listed'?'<span class="sub">'+esc(c.contact.phone)+'</span>':'')+'</td>'+
-    '<td class="num">'+cell(c.checks.acres,fmtA(c.acres))+(c.gis_acres&&Math.abs(c.gis_acres-c.acres)>.1?'<span class="sub">GIS '+fmtA(c.gis_acres)+'</span>':'')+'</td>'+
+    '<td class="num">'+cell(c.checks.acres,fmtA(c.acres))+(c.listed?'<span class="sub">Listed '+fmtA(c.listed)+'</span>':'')+(c.gis_acres&&Math.abs(c.gis_acres-c.acres)>.1?'<span class="sub">Outline '+fmtA(c.gis_acres)+'</span>':'')+'</td>'+
     '<td class="num">'+(c.price?(c.price_est?'≈':'')+fmt$(c.price):'TBD')+'</td><td class="num">'+(c.ppa?(c.price_est?'≈':'')+fmt$(c.ppa):'—')+'</td>'+
     '<td>'+esc(c.zoning)+'</td><td>'+cell(c.checks.city,c.in_city?'Inside':'Outside')+'</td>'+
-    '<td>'+cell(c.checks.flood,esc(c.flood_short))+(c.fw>0.5?'<span class="sub">'+Math.round(c.fw)+'% floodway</span>':'')+'</td>'+
+    '<td>'+cell(c.checks.flood,esc(c.flood_short))+(c.flood_in?'<span class="sub">'+(c.fw>0.5?Math.round(c.fw)+'% floodway · ':'')+'~'+c.dry.toFixed(1)+' ac outside</span>':'')+'</td>'+
     '<td class="num">'+cell(c.checks.transit,mi(c.stop))+'</td><td class="num">'+cell(c.checks.school,ft(c.school))+'</td></tr>';
   }).join('');
   document.querySelectorAll('#matrix thead th').forEach(function(th){th.removeAttribute('aria-sort');if(th.getAttribute('data-k')===k)th.setAttribute('aria-sort',mSort.dir>0?'ascending':'descending')});
@@ -159,7 +159,7 @@ var modal=document.getElementById('modal');
 function openModal(id){
   var c=C.filter(function(x){return x.id===id})[0]; if(!c) return;
   var rows=[
-   ['Site number',c.no+(c.short?' · Proposed shortlist':'')],['Jurisdiction',c.juris],['Acreage',fmtA(c.acres)+' ac listed'+(c.gis_acres!=null?' · '+fmtA(c.gis_acres)+' ac mapped (County GIS)':'')],
+   ['Site number',c.no+(c.short?' · Proposed shortlist':'')],['Jurisdiction',c.juris],['Acreage',fmtA(c.acres)+' ac used'+(c.listed?' · '+fmtA(c.listed)+' ac listed':'')+(c.gis_acres!=null?' · '+fmtA(c.gis_acres)+' ac in County parcel outline':'')],
    ['Asking price',c.price?(c.price_est?'≈':'')+fmt$(c.price)+(c.price_note?' ('+c.price_note+')':''):(c.price_note||'TBD')],['Price per acre',c.ppa?(c.price_est?'≈':'')+fmt$(c.ppa):'—'],['Zoning',c.zoning],
    ['Parcel ID(s)',c.pins.length?c.pins.join(', '):'Not matched'],['Flood (FEMA)',c.flood],['Nearest FAST stop',c.stop?c.stop.mi.toFixed(2)+' mi · '+c.stop.name:'—'],
    ['Nearest public school',c.school?ft(c.school)+' · '+c.school.name.trim():'—'],['Listing / contact',c.contact.type==='listed'?contactLine(c)+' · '+c.contact.phone+(c.contact.email?' · '+c.contact.email:'')+(c.contact.mls?' · MLS '+c.contact.mls:''):c.contact.text]
