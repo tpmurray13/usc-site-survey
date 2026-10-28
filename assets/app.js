@@ -106,7 +106,7 @@ function renderCards(){
       '<div class="card__b">'+
       '<h3 class="card__t">'+sno(c)+esc(c.name)+'</h3><p class="card__a">'+esc(c.area)+'</p>'+
       '<dl class="facts"><div><dt>Acres</dt><dd>'+fmtA(c.acres)+'</dd></div><div><dt>Asking</dt><dd>'+(c.price?(c.price_est?'≈':'')+fmt$(c.price):'TBD')+'</dd></div><div><dt>$/acre</dt><dd>'+(c.ppa?(c.price_est?'≈':'')+fmt$(c.ppa):'—')+'</dd></div></dl>'+
-      checksHTML(c)+contactHTML(c)+
+      checksHTML(c)+(c.flag?'<p class="flag">'+esc(c.flag)+'</p>':'')+contactHTML(c)+
       '<div class="card__f"><span class="card__a" style="margin:0">'+esc(c.juris)+'</span><button type="button" class="linkbtn" data-open="'+c.id+'">Details &rarr;</button></div></div></article>';
   }).join('');
 }

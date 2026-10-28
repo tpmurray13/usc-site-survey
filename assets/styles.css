@@ -300,3 +300,4 @@ a:hover{color:var(--accent-2)}
 .schpin{width:15px;height:15px;border-radius:4px;background:#b8860b;color:#fff;border:1.5px solid #fff;box-shadow:0 1px 3px rgba(0,0,0,.35);display:grid;place-items:center;font:800 9px/1 var(--font-body);font-style:normal}
 .schpin--lg{display:inline-grid;width:16px;height:16px;margin-right:6px;vertical-align:-3px;box-shadow:none}
 .matrix td.name{min-width:190px}.matrix td:nth-child(2){min-width:170px}
+.flag{margin:12px 0 0;padding:8px 12px;border-left:3px solid var(--verify);background:#f6ecdc;border-radius:var(--r-sm);font-size:var(--text-xs);line-height:1.45;color:#5e3a0c}
