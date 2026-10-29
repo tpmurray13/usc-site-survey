@@ -102,7 +102,7 @@ function renderCards(){
   if(!list.length){el.innerHTML='<div class="empty">No properties match this filter.</div>';return}
   el.innerHTML=list.map(function(c){
     return '<article class="card">'+
-      '<div class="card__img"><img loading="lazy" src="assets/img/'+c.img[0]+'" alt="'+esc(c.name)+' site exhibit">'+(c.short?'<span class="card__num">Proposed shortlist</span>':'')+'</div>'+
+      '<div class="card__img"><img loading="lazy" src="assets/img/'+c.img[0]+'" alt="'+esc(c.name)+' site exhibit">'+(c.short?'<span class="card__num">Proposed shortlist</span>':(c.added?'<span class="card__num card__num--new">Added: Oct market search</span>':''))+'</div>'+
       '<div class="card__b">'+
       '<h3 class="card__t">'+sno(c)+esc(c.name)+'</h3><p class="card__a">'+esc(c.area)+'</p>'+
       '<dl class="facts"><div><dt>Acres</dt><dd>'+fmtA(c.acres)+'</dd></div><div><dt>Asking</dt><dd>'+(c.price?(c.price_est?'≈':'')+fmt$(c.price):'TBD')+'</dd></div><div><dt>$/acre</dt><dd>'+(c.ppa?(c.price_est?'≈':'')+fmt$(c.ppa):'—')+'</dd></div></dl>'+

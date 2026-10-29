@@ -301,3 +301,5 @@ a:hover{color:var(--accent-2)}
 .schpin--lg{display:inline-grid;width:16px;height:16px;margin-right:6px;vertical-align:-3px;box-shadow:none}
 .matrix td.name{min-width:190px}.matrix td:nth-child(2){min-width:170px}
 .flag{margin:12px 0 0;padding:8px 12px;border-left:3px solid var(--verify);background:#f6ecdc;border-radius:var(--r-sm);font-size:var(--text-xs);line-height:1.45;color:#5e3a0c}
+
+.card__num.card__num--new{background:#fff!important;color:#17613c;border:1px solid #17613c}
