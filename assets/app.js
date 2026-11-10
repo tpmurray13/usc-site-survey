@@ -169,8 +169,8 @@ function openModal(id){
    '<div class="mbody">'+(c.short?'<p class="tag tag--short">Proposed shortlist</p>':'')+'<h3 id="mTitle">'+sno(c)+esc(c.name)+'</h3><p class="sub">'+esc(c.area)+(c.img_cap?' · '+esc(c.img_cap):'')+'</p>'+
    '<div class="mgrid"><div><h4 class="h4" style="margin-top:0">Screening notes</h4><ul class="mnotes">'+c.notes.map(function(n){return '<li>'+esc(n)+'</li>'}).join('')+'</ul>'+
    '<h4 class="h4">Checks</h4>'+checksHTML(c)+'</div>'+
-   '<dl class="mlist">'+rows.map(function(r){return '<dt>'+r[0]+'</dt><dd>'+esc(r[1])+'</dd>'}).join('')+'</dl></div>'+
-   '<div class="mact">'+(c.center?'<button type="button" class="btn" data-map="'+c.id+'">Show on map</button>':'')+'<button type="button" class="btn btn--line" data-close>Close</button></div></div>';
+   '<dl class="mlist">'+rows.map(function(r){return '<dt>'+r[0]+'</dt><dd>'+esc(r[1])+'</dd>'}).join('')+(c.link?'<dt>Marketed for sale</dt><dd><a href="'+esc(c.link)+'" target="_blank" rel="noopener">View listing on '+esc(c.link_src)+'&nbsp;&#8599;</a></dd>':'')+'</dl></div>'+
+   '<div class="mact">'+(c.link?'<a class="btn btn--line" href="'+esc(c.link)+'" target="_blank" rel="noopener">View listing &#8599;</a>':'')+(c.center?'<button type="button" class="btn" data-map="'+c.id+'">Show on map</button>':'')+'<button type="button" class="btn btn--line" data-close>Close</button></div></div>';
   if(modal.showModal) modal.showModal(); else modal.setAttribute('open','');
 }
 modal.addEventListener('click',function(e){
