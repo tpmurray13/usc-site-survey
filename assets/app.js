@@ -149,6 +149,7 @@ var TL=[
  ['Sep 10, 2026','Strategy meeting','Person St assemblage reviewed, options for the contract discussed, and a new market survey agreed.'],
  ['Oct 19, 2026','Board motion on alternatives','Identify up to five alternative sites within the county for the Nov 12 agenda session, alongside an RFI for a development partner and an RFP for turnkey shelter services.','is-key'],
  ['Oct 20 – 28, 2026','New survey','October land review (13 listings), plus Mann St and Bonnie St referred by County staff, and 511 S Eastern Blvd.','is-now'],
+ ['Nov 10, 2026','Revised seller proposal','Seller offers to donate the 135 S King St warehouse tract and sell 110 S Racepath St for $450,000.','is-key'],
  ['Nov 12, 2026','Agenda session','Up to five alternative sites go to the Board.','is-next'],
  ['Dec 8, 2026','Examination period ends','Last day to terminate the King/Racepath contract, before 5:00 PM.','is-next']
 ];
